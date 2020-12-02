@@ -30,6 +30,8 @@ END {
 }
 
 function animate(from, to, len,    x, ystart, ystop, y, n) {
+	# corners
+	from[1, 1] = from[1, len] = from[len, 1] = from[len, len] = 1;
 	for (x = 1; x <= len; x++) {
 		ystart = 1   + (x == 1 || x == len);
 		ystop  = len - (x == 1 || x == len);
@@ -45,8 +47,6 @@ function animate(from, to, len,    x, ystart, ystop, y, n) {
 			to[x, y] = (n == 3 || n == 2 && from[x, y]);
 		}
 	}
-	# corners
-	to[1, 1] = to[1, len] = to[len, 1] = to[len, len] = 1;
 }
 
 function sum(from,    i, n) {
